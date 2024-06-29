@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header'
-import Nav from './components/nav';
+import Nav from './components/Navbar';
 import Profile from './components/profile';
 
 
@@ -15,10 +15,6 @@ const App = () => {
     </div>
   );
 }
-
-
-
-
 
 export default App;
 
