@@ -1,0 +1,28 @@
+.nav {
+    grid-area: n;
+    background-color: #1A153F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding-top: 10px;
+}
+
+.nav div {
+    padding-left: 10px;
+}
+
+.nav div:last-of-type {
+    margin-top: 10px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    transition: text-decoration .3s;
+}
+
+.nav a:hover {
+    text-decoration: solid;
+}

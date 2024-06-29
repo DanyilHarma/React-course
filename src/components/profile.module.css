@@ -1,0 +1,122 @@
+.content {
+    grid-area: c;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+.infoUser {
+    display: flex;
+    gap: 25px;
+}
+
+.imageTop {
+    width: 100%;
+    max-width: 1001px;
+    height: 200px;
+    object-fit: cover;
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/012/979/480/small/black-and-blue-abstract-banner-with-polygonal-pattern-template-for-your-header-and-presentation-modern-background-vector.jpg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.avatar img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.description div:first-of-type {
+    font-size: 25px;
+}
+
+.description div {
+    color: #47525e;
+    font-size: 20px;
+}
+
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.postsContainer h6 {
+    color: #47525e;
+    font-size: 25px;
+    margin: 20px 0;
+}
+
+.newsContainer {
+    width: fit-content;
+}
+
+.newsContainer textarea {
+    resize: none;
+    caret-color: #fff;
+    background-color: #323a42;
+    color: #718191;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 410px;
+    padding: 15px 10px;
+}
+
+.submitContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit {
+    width: 100px;
+    height: 25px;
+    background-color: #323a42;
+    color: #47525e;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: color .3s, background-color .3s
+}
+
+.submit:hover {
+    background-color: #47525e;
+    color: #323a42;
+}
+
+.newPosts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.post div:last-of-type {
+    color: #323a42;
+    font-size: 22px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #47525e;
+}
