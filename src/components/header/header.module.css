@@ -1,11 +1,13 @@
 .header img {
-    width: 50px;
+    width: 100px;
     border-radius: 50%;
 }
 
 .header {
     grid-area: h;
     background-color: rgb(183, 70, 1);
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
 }

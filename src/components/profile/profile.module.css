@@ -5,14 +5,15 @@
 
 .imageTop {
     width: 100%;
-    max-width: 1001px;
+    max-width: 1301px;
     height: 200px;
     object-fit: cover;
-    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/012/979/480/small/black-and-blue-abstract-banner-with-polygonal-pattern-template-for-your-header-and-presentation-modern-background-vector.jpg);
-    background-position: left;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH6zor21VnZL-dLPBRXFAY0Km2kgp7hrzFMw&s);
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .avatar {
