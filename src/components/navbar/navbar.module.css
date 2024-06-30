@@ -4,26 +4,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
     padding-top: 10px;
     border-radius: 10px;
 }
 
-.nav div {
+.item {
     padding-left: 10px;
 }
 
-.nav div:last-of-type {
+.item:last-of-type {
     margin-top: 10px;
 }
 
-.nav a {
+.item a {
     text-decoration: none;
     color: #fff;
-    font-size: 20px;
+    font-size: 35px;
     transition: text-decoration .3s;
 }
 
-.nav a:hover {
+.item a:hover {
     text-decoration: underline;
+}
+
+a.active {
+    color: #080101;
 }
