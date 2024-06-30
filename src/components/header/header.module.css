@@ -1,9 +1,11 @@
 .header img {
     width: 50px;
+    border-radius: 50%;
 }
 
 .header {
     grid-area: h;
     background-color: rgb(183, 70, 1);
     padding: 5px;
+    border-radius: 10px;
 }

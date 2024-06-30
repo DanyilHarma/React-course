@@ -6,6 +6,7 @@
     align-items: center;
     gap: 5px;
     padding-top: 10px;
+    border-radius: 10px;
 }
 
 .nav div {
@@ -24,5 +25,5 @@
 }
 
 .nav a:hover {
-    text-decoration: solid;
+    text-decoration: underline;
 }
