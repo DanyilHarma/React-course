@@ -11,7 +11,7 @@ const MyPosts = () => {
             </div>
             <div className={classes.newPosts}>
                 <Post src="https://avatars.dzeninfra.ru/get-zen_doc/3964212/pub_6121075179caa304e0572638_61210a0484456f3ce506a4fa/scale_1200" post="Hey,why everybody love me?!" count="33" />
-                <Post src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi7_FmKxSfH40-VpbgsZQ6VJPCBjBGSqhk8g&s" post="Hey,where is my boomerang???)" count="44" />
+                <Post src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi7_FmKxSfH40-VpbgsZQ6VJPCBjBGSqhk8g&s" post="Hey,where is my boomerang???" count="44" />
                 <Post src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQspsyltX2AgKZuQTNfJiHEG54TwNuJUhzjUA&s" post="Give me all the stones!" count="22" />
             </div>
         </div>
