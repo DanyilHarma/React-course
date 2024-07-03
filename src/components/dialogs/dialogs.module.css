@@ -1,0 +1,39 @@
+.dialogs {
+    display: flex;
+    gap: 400px;
+}
+
+.dialogsItems h1 {
+    margin: -25px;
+    margin-bottom: 5px;
+    color: #47525e;
+}
+
+.dialogsItems {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.dialog a {
+    color: #47525e;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.dialog a.active {
+    color: #fff;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+}
+
+.message {
+    color: #47525e;
+    font-size: 25px;
+}
