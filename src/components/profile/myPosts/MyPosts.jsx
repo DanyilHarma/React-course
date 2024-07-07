@@ -9,6 +9,8 @@ const MyPosts = (props) => {
 
 
 
+
+
     return (
         <div className={classes.postsContainer}>
             <h6>My posts</h6>

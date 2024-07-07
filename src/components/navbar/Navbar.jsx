@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import classes from "./navbar.module.css"
+
 import FriendItem from "../friends/friendItem";
 
 const Nav = (props) => {
 
     let friendsElement = props.friend.map((friend, index) => <FriendItem key={index} name={friend.name} imgSrc={friend.imgSrc} />)
+
 
     return (
         <nav className={classes.nav}>
@@ -23,12 +25,14 @@ const Nav = (props) => {
             <div className={classes.item}>
                 <NavLink to="/settings" className={({ isActive }) => isActive ? classes.active : undefined}>Settings</NavLink>
             </div>
+
             <div className={classes.friend}>
                 <h1>Friends</h1>
                 <div className={classes.friendItemContainer}>
                     {friendsElement}
                 </div>
             </div>
+
         </nav >
     )
 }

@@ -1,4 +1,5 @@
 
+
 import Message from "./message/message"
 import DialogItem from "./dialogItem/dialogItem"
 import classes from "./dialogs.module.css"
@@ -24,6 +25,7 @@ const Dialogs = (props) => {
                 <div className={classes.messages}>
                     {messagesElements}
                 </div>
+
             </div>
         </div>
     )

@@ -13,23 +13,29 @@ import Settings from './components/settings/settings';
 
 
 
+
 const App = (props) => {
+
   return (
     <Router>
       <div className="app-wrapper">
         <Header />
+
         <Nav friend={props.state.friends.friend} />
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/profile/*" element={<Profile posts={props.state.profilePage.posts} />} />
             <Route path="/dialogs/*" element={<Dialogs dialogs={props.state.messagesPage.dialogs} messages={props.state.messagesPage.messages} />} />
+
+
+
             <Route path="/news/*" element={<News />} />
             <Route path="/music/*" element={<Music />} />
             <Route path="/settings/*" element={<Settings />} />
           </Routes>
         </div>
-      </div>
-    </Router>
+      </div >
+    </Router >
   );
 }
 

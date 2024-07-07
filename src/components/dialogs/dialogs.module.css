@@ -19,12 +19,14 @@ hr {
 .dialogs {
     display: flex;
     gap: 200px;
+
 }
 
 .dialogsItems {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
 }
 
 .dialog img {
@@ -32,16 +34,19 @@ hr {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+
 }
 
 .dialog a {
     color: #47525e;
     font-size: 25px;
     text-decoration: none;
+
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
 
 
 .dialog a.active {
@@ -53,6 +58,7 @@ hr {
     flex-direction: column;
     gap: 30px;
     justify-content: space-evenly;
+
 }
 
 .message {

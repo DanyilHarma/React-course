@@ -14,10 +14,12 @@
 }
 
 .item:last-of-type {
+
     text-decoration: none;
     color: #fff;
     font-size: 35px;
     margin-top: 100px;
+
 }
 
 .item a {
@@ -54,4 +56,5 @@ a.active {
 .friendItemContainer {
     display: flex;
     gap: 30px;
+
 }
