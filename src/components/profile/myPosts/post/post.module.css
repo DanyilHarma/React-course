@@ -1,0 +1,34 @@
+.post {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.post div {
+    color: #323a42;
+    font-size: 22px;
+}
+
+.post img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.like {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like span {
+    color: #323a42;
+    font-size: 15px;
+}
+
+.like img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
