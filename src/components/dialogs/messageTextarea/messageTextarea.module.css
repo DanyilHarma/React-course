@@ -1,0 +1,36 @@
+.textarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.textarea textarea {
+    resize: none;
+    caret-color: #fff;
+    background-color: #323a42;
+    color: #718191;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    padding: 15px 10px;
+}
+
+.textarea button {
+    background-color: #323a42;
+    color: #718191;
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.textarea button:hover {
+    background-color: #505b66;
+}

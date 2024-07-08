@@ -3,6 +3,7 @@
 import Message from "./message/message"
 import DialogItem from "./dialogItem/dialogItem"
 import classes from "./dialogs.module.css"
+import MessageTextarea from "./messageTextarea/messageTextarea";
 
 
 
@@ -24,6 +25,7 @@ const Dialogs = (props) => {
                 <hr />
                 <div className={classes.messages}>
                     {messagesElements}
+                    <MessageTextarea />
                 </div>
 
             </div>

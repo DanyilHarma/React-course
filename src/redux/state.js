@@ -1,3 +1,4 @@
+import { rerenderEntireState } from "../render";
 
 let state = {
     profilePage: {
@@ -100,5 +101,16 @@ let state = {
         ]
     }
 }
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 5,
+        src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
+        post: postMessage,
+        count: 0
+    }
+    state.profilePage.posts.push(newPost);
+    rerenderEntireState(state);
+};
 
 export default state;
