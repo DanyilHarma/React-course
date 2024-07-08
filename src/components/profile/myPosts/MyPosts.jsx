@@ -12,17 +12,21 @@ const MyPosts = (props) => {
 
 
     const addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        text = "";
+        props.addPost();
+        props.onPostChange("");
     }
 
+
+    const onPostChange = () => {
+        let postMessage = newPostElement.current.value;
+        props.onPostChange(postMessage);
+    }
 
     return (
         <div className={classes.postsContainer}>
             <h6>My posts</h6>
             <div className={classes.newsContainer}>
-                <textarea name="" ref={newPostElement} placeholder="Your news..."></textarea>
+                <textarea name="" ref={newPostElement} onChange={onPostChange} value={props.newPostText} placeholder="Print posts..." />
                 <div className={classes.submitContainer}><div className={classes.submit} onClick={addPost}>Send</div></div>
             </div>
             <div className={classes.newPosts}>

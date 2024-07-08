@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 import { BrowserRouter } from 'react-router-dom';
-import { addPost } from './redux/state';
-
+import { addPost, onMessageChange, onPostChange, sendMessage } from './redux/state';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 export let rerenderEntireState = (state) => {
-    const root = ReactDOM.createRoot(document.getElementById('root'));
+
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPost={addPost} />
+                <App state={state} addPost={addPost} onPostChange={onPostChange} sendMessage={sendMessage} onMessageChange={onMessageChange} />
             </BrowserRouter>
         </React.StrictMode>
     );
