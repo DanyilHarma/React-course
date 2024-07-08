@@ -21,7 +21,9 @@ let state = {
                 post: "Give me all the stones!",
                 count: 22
             }
-        ]
+        ],
+        newPostText: ""
+
     },
     messagesPage: {
         dialogs: [{
@@ -79,7 +81,8 @@ let state = {
             id: 6,
             message: "asdf"
         }
-        ]
+        ],
+        newMessageText: ""
     },
     friends: {
         friend: [{
@@ -102,15 +105,36 @@ let state = {
     }
 }
 
-export let addPost = (postMessage) => {
+window.state = state
+
+export let addPost = () => {
     let newPost = {
         id: 5,
         src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
-        post: postMessage,
+        post: state.profilePage.newPostText,
         count: 0
     }
     state.profilePage.posts.push(newPost);
     rerenderEntireState(state);
 };
+
+export let onPostChange = (postMessage) => {
+    state.profilePage.newPostText = postMessage
+    rerenderEntireState(state);
+};
+
+export let sendMessage = () => {
+    let message = {
+        id: 7,
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.messages.push(message);
+    rerenderEntireState(state);
+}
+
+export let onMessageChange = (messageText) => {
+    state.messagesPage.newMessageText = messageText;
+    rerenderEntireState(state);
+}
 
 export default state;

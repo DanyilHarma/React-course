@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import News from './components/news/news';
 import Music from './components/Music/music';
 import Settings from './components/settings/settings';
+import { onMessageChange, sendMessage } from './redux/state';
 
 
 
@@ -15,7 +16,6 @@ import Settings from './components/settings/settings';
 
 
 const App = (props) => {
-
   return (
     <div className="app-wrapper">
       <Header />
@@ -23,8 +23,9 @@ const App = (props) => {
       <Nav friend={props.state.friends.friend} />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/profile/*" element={<Profile posts={props.state.profilePage.posts} addPost={props.addPost} />} />
-          <Route path="/dialogs/*" element={<Dialogs dialogs={props.state.messagesPage.dialogs} messages={props.state.messagesPage.messages} />} />
+          <Route path="/profile/*" element={<Profile posts={props.state.profilePage.posts}
+            newPostText={props.state.profilePage.newPostText} addPost={props.addPost} onPostChange={props.onPostChange} />} />
+          <Route path="/dialogs/*" element={<Dialogs dialogs={props.state.messagesPage.dialogs} messages={props.state.messagesPage.messages} sendMessage={sendMessage} onMessageChange={onMessageChange} />} />
           <Route path="/news/*" element={<News />} />
           <Route path="/music/*" element={<Music />} />
           <Route path="/settings/*" element={<Settings />} />
