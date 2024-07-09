@@ -1,11 +1,28 @@
-
-import './index.css';
-import state from "./redux/state";
+import "./index.css"
+import { subscribe } from "./redux/state";
 import reportWebVitals from './reportWebVitals';
-import { rerenderEntireState } from "./render"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
+import { BrowserRouter } from 'react-router-dom';
+import store from './redux/state';
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
-rerenderEntireState(state);
+let rerenderEntireState = (store) => {
+
+    root.render(
+        <React.StrictMode>
+            <BrowserRouter>
+                <App state={store} />
+            </BrowserRouter>
+        </React.StrictMode>
+    );
+}
+
+store.rerenderEntireState(store);
+
+store.subscribe(rerenderEntireState);
 
 
 
