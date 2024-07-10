@@ -1,5 +1,4 @@
 import "./index.css"
-import { subscribe } from "./redux/state";
 import reportWebVitals from './reportWebVitals';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -9,20 +8,23 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/state';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEntireState = (store) => {
+let rerenderEntireState = (state) => {
 
     root.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={store} />
+                <App state={state} store={store} />
             </BrowserRouter>
         </React.StrictMode>
     );
 }
 
-store.rerenderEntireState(store);
+rerenderEntireState(store.getState());
 
-store.subscribe(rerenderEntireState);
+
+store.subscribe(() => {
+    rerenderEntireState(store.getState())
+});
 
 
 

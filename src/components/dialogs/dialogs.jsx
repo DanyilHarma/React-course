@@ -25,7 +25,7 @@ const Dialogs = (props) => {
                 <hr />
                 <div className={classes.messages}>
                     {messagesElements}
-                    <MessageTextarea sendMessage={props.sendMessage} onMessageChange={props.onMessageChange} />
+                    <MessageTextarea store={props.store} />
                 </div>
 
             </div>

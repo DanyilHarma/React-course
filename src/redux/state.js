@@ -1,12 +1,5 @@
-let rerenderEntireState = () => {
-    console.log("gigi");
-}
-
 let store = {
-    _subscriber() {
-        console.log("gigi");
-    },
-    state: {
+    _state: {
         profilePage: {
             posts: [
                 {
@@ -28,21 +21,7 @@ let store = {
                     count: 22
                 }
             ],
-            _newPostText: "",
-            addPost() {
-                let newPost = {
-                    id: 5,
-                    src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
-                    post: this.profilePage._newPostText,
-                    count: 0
-                }
-                this.profilePage.posts.push(newPost);
-                rerenderEntireState(store);
-            },
-            onPostChange(postMessage) {
-                this.profilePage.newPostText = postMessage
-                rerenderEntireState(store);
-            }
+            newPostText: ""
         },
         messagesPage: {
             dialogs: [{
@@ -101,19 +80,7 @@ let store = {
                 message: "asdf"
             }
             ],
-            newMessageText: "",
-            sendMessage() {
-                let message = {
-                    id: 7,
-                    message: this.messagesPage.newMessageText
-                }
-                this.messagesPage.messages.push(message);
-                rerenderEntireState(store);
-            },
-            onMessageChange(messageText) {
-                this.messagesPage.newMessageText = messageText;
-                rerenderEntireState(store);
-            }
+            newMessageText: ""
         },
         friends: {
             friend: [{
@@ -130,18 +97,49 @@ let store = {
                 id: 3,
                 name: "Tof",
                 imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQspsyltX2AgKZuQTNfJiHEG54TwNuJUhzjUA&s"
-            },
-
+            }
             ]
-        },
-        subscribe(observer) {
-            rerenderEntireState = observer;
         }
+    },
+    _subscriber() {
+        console.log("gigi");
+    },
+    getState() {
+        return this._state;
+    },
+    sendMessage() {
+        let message = {
+            id: 7,
+            message: this._state.messagesPage.newMessageText
+        }
+        this._state.messagesPage.messages.push(message);
+        this._subscriber(store);
+    },
+    onMessageChange(messageText) {
+        this._state.messagesPage.newMessageText = messageText;
+        this._subscriber(store);
+    },
+    addPost() {
+        let newPost = {
+            id: 5,
+            src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
+            post: this._state.profilePage.newPostText,
+            count: 0
+        }
+        this._state.profilePage.posts.push(newPost);
+        this._subscriber(store);
+    },
+    onPostChange(postMessage) {
+        this._state.profilePage.newPostText = postMessage
+        this._subscriber(store);
+    },
+    subscribe(observer) {
+        this._subscriber = observer;
     }
 }
 
+window.state = store._state;
 
-window.store = store
 
 // export const addPost = () => {
 //     let newPost = {
