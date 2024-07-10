@@ -9,13 +9,13 @@ let messageElement = React.createRef();
 
 const MessageTextarea = (props) => {
     const sendMessage = () => {
-        props.sendMessage();
-        props.onMessageChange("");
+        props.store.sendMessage();
+        props.store.onMessageChange("");
     }
 
     const onMessageChange = () => {
         let messageText = messageElement.current.value;
-        props.onMessageChange(messageText);
+        props.store.onMessageChange(messageText);
     }
 
     return (
