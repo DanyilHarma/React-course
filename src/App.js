@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/Header'
 import Nav from './components/navbar/Navbar';
@@ -8,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import News from './components/news/news';
 import Music from './components/Music/music';
 import Settings from './components/settings/settings';
-import { onMessageChange, sendMessage } from './redux/state';
+
 
 
 
