@@ -8,8 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './redux/state';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEntireState = (state) => {
-
+let rerenderEntireTree = (state) => {
     root.render(
         <React.StrictMode>
             <BrowserRouter>
@@ -19,12 +18,10 @@ let rerenderEntireState = (state) => {
     );
 }
 
-rerenderEntireState(store.getState());
+rerenderEntireTree(store.getState());
 
 
-store.subscribe(() => {
-    rerenderEntireState(store.getState())
-});
+store.subscribe(rerenderEntireTree);
 
 
 

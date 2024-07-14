@@ -102,77 +102,45 @@ let store = {
         }
     },
     _subscriber() {
-        console.log("gigi");
+        console.log("garma");
     },
+
     getState() {
         return this._state;
     },
-    sendMessage() {
-        let message = {
-            id: 7,
-            message: this._state.messagesPage.newMessageText
-        }
-        this._state.messagesPage.messages.push(message);
-        this._subscriber(store);
-    },
-    onMessageChange(messageText) {
-        this._state.messagesPage.newMessageText = messageText;
-        this._subscriber(store);
-    },
-    addPost() {
-        let newPost = {
-            id: 5,
-            src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
-            post: this._state.profilePage.newPostText,
-            count: 0
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._subscriber(store);
-    },
-    onPostChange(postMessage) {
-        this._state.profilePage.newPostText = postMessage
-        this._subscriber(store);
-    },
     subscribe(observer) {
         this._subscriber = observer;
+    },
+
+    dispatch(action) { // {type: "ADD-POST"}
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: 5,
+                src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
+                post: this._state.profilePage.newPostText,
+                count: 0
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = "";
+            this._subscriber(this.getState());
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.newPostText = action.postMessage
+            this._subscriber(this.getState());
+        }
+        else if (action.type === "SEND-MESSAGE") {
+            let message = {
+                id: 7,
+                message: this._state.messagesPage.newMessageText
+            }
+            this._state.messagesPage.messages.push(message);
+            this._state.messagesPage.newMessageText = "";
+            this._subscriber(this.getState());
+        }
+        else if (action.type === "ON-MESSAGE-CHANGE") {
+            this._state.messagesPage.newMessageText = action.messageText;
+            this._subscriber(this.getState());
+        }
     }
-}
-
-window.state = store._state;
-
-
-// export const addPost = () => {
-//     let newPost = {
-//         id: 5,
-//         src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
-//         post: state.profilePage.newPostText,
-//         count: 0
-//     }
-//     state.profilePage.posts.push(newPost);
-//     rerenderEntireState(state);
-// };
-
-// export const onPostChange = (postMessage) => {
-//     state.profilePage.newPostText = postMessage
-//     rerenderEntireState(state);
-// };
-
-// export const sendMessage = () => {
-//     let message = {
-//         id: 7,
-//         message: state.messagesPage.newMessageText
-//     }
-//     state.messagesPage.messages.push(message);
-//     rerenderEntireState(state);
-// }
-
-// export const onMessageChange = (messageText) => {
-//     state.messagesPage.newMessageText = messageText;
-//     rerenderEntireState(state);
-// }
-
-// export const subscribe = (observer) => {
-//     rerenderEntireState = observer;
-// }
+};
 
 export default store;
