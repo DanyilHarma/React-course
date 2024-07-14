@@ -1,20 +1,19 @@
 import React from "react"
 import classes from "./messageTextarea.module.css"
+import { onMessageChangeActionCreator, sendMessageActionCreator } from "../../../redux/state";
 
 
 let messageElement = React.createRef();
 
 
-
-
 const MessageTextarea = (props) => {
     const sendMessage = () => {
-        props.store.dispatch({ type: "SEND-MESSAGE" });
+        props.store.dispatch(sendMessageActionCreator());
     }
 
     const onMessageChange = () => {
         let messageText = messageElement.current.value;
-        props.store.dispatch({ type: "ON-MESSAGE-CHANGE", messageText: messageText });
+        props.store.dispatch(onMessageChangeActionCreator(messageText));
     }
 
     return (
