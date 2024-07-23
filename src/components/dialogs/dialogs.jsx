@@ -1,19 +1,16 @@
-
-
 import Message from "./message/message"
 import DialogItem from "./dialogItem/dialogItem"
 import classes from "./dialogs.module.css"
-import MessageTextarea from "./messageTextarea/messageTextarea";
+import MessageTextareaContainer from "./messageTextarea/messageTextareaContainer";
+import { connect } from "react-redux";
 
 
 
 
 const Dialogs = (props) => {
 
-    const { dialogs, messages } = props;
-
-    let dialogsElement = dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} imgSrc={dialog.imgSrc} />)
-    let messagesElements = messages.map(message => <Message message={message.message} key={message.id} />)
+    let dialogsElement = props.state.messagesPage.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} imgSrc={dialog.imgSrc} />)
+    let messagesElements = props.state.messagesPage.messages.map(message => <Message message={message.message} key={message.id} />)
 
     return (
         <div className={classes.dialogsContainer}>
@@ -25,7 +22,7 @@ const Dialogs = (props) => {
                 <hr />
                 <div className={classes.messages}>
                     {messagesElements}
-                    <MessageTextarea store={props.store} />
+                    <MessageTextareaContainer />
                 </div>
 
             </div>

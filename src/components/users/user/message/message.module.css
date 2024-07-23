@@ -1,0 +1,9 @@
+.messageContainer {
+    width: 400px;
+}
+
+.messageContainer>div {
+    font-size: 18px;
+    color: #4f4f4f;
+    font-weight: 400;
+}

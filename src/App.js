@@ -7,32 +7,34 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import News from './components/news/news';
 import Music from './components/Music/music';
 import Settings from './components/settings/settings';
-
-
-
-
-
-
+import UsersContainer from './components/users/usersContainer';
+import { connect } from 'react-redux';
 
 const App = (props) => {
+
   return (
     <div className="app-wrapper">
       <Header />
-
       <Nav friend={props.state.friends.friend} />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/profile/*" element={<Profile posts={props.state.profilePage.posts}
-            newPostText={props.state.profilePage.newPostText} store={props.store} />} />
-          <Route path="/dialogs/*" element={<Dialogs dialogs={props.state.messagesPage.dialogs} messages={props.state.messagesPage.messages} store={props.store} />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/dialogs/*" element={<Dialogs state={props.state} />} />
           <Route path="/news/*" element={<News />} />
           <Route path="/music/*" element={<Music />} />
+          <Route path="/users/*" element={<UsersContainer />} />
           <Route path="/settings/*" element={<Settings />} />
         </Routes>
       </div>
     </div >
-  );
+  )
 }
 
+// const mapStateToProps = (state) => ({
+//   friends: state.friends.friend
+// })
+// export default connect(mapStateToProps)(App)
+
 export default App;
+
 

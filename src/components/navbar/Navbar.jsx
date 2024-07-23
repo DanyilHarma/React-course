@@ -4,14 +4,15 @@ import classes from "./navbar.module.css"
 import FriendItem from "../friends/friendItem";
 
 const Nav = (props) => {
-
     let friendsElement = props.friend.map((friend, index) => <FriendItem key={index} name={friend.name} imgSrc={friend.imgSrc} />)
-
 
     return (
         <nav className={classes.nav}>
             <div className={classes.item}>
                 <NavLink to="/profile" className={({ isActive }) => isActive ? classes.active : undefined}>Profile</NavLink>
+            </div>
+            <div className={classes.item}>
+                <NavLink to="/users" className={({ isActive }) => isActive ? classes.active : undefined}>Users</NavLink>
             </div>
             <div className={classes.item}>
                 <NavLink to="/dialogs" className={({ isActive }) => isActive ? classes.active : undefined}>Messages</NavLink>
