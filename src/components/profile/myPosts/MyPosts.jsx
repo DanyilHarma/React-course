@@ -1,32 +1,28 @@
 import React from "react"
 import classes from "./myPosts.module.css"
 import Post from "./post/post";
-import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/state";
+
+
+
 
 const MyPosts = (props) => {
 
-
-
     let postElements = props.posts.map(post => <Post key={post.id} src={post.src} post={post.post} count={post.count} />)
 
-    let newPostElement = React.createRef();
-
-
     const addPost = () => {
-        props.store.dispatch(addPostActionCreator());
+        props.addPost();
     }
 
-
-    const onPostChange = () => {
-        let postMessage = newPostElement.current.value;
-        props.store.dispatch(updateNewPostTextActionCreator(postMessage));
+    const onPostChange = (e) => {
+        let postMessage = e.target.value;
+        props.onPostChange(postMessage);
     }
 
     return (
         <div className={classes.postsContainer}>
             <h6>My posts</h6>
             <div className={classes.newsContainer}>
-                <textarea name="" ref={newPostElement} onChange={onPostChange} value={props.newPostText} placeholder="Print posts..." />
+                <textarea name="" onChange={onPostChange} value={props.newPostText} placeholder="Print posts..." />
                 <div className={classes.submitContainer}><div className={classes.submit} onClick={addPost}>Send</div></div>
             </div>
             <div className={classes.newPosts}>

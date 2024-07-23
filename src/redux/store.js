@@ -1,7 +1,6 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const SEND_MESSAGE = "SEND-MESSAGE";
-const ON_MESSAGE_CHANGE = "ON-MESSAGE-CHANGE";
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import friendsReducer from "./friendsReducer"
 
 let store = {
     _state: {
@@ -57,7 +56,7 @@ let store = {
             {
                 id: 6,
                 name: "Azai",
-                imgSrc: "https://static.wikia.nocookie.net/zlodei/images/e/e7/Ozai_Render.png/revision/latest?cb=20220823182521&path-prefix=ru"
+                imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxH8BOXf7ojO6dkCSw2sTXevqgnzE08zEDUw&s"
             }],
 
             messages: [{
@@ -117,46 +116,13 @@ let store = {
         this._subscriber = observer;
     },
 
-    dispatch(action) { // {type: "ADD-POST"}
-        if (action.type === "ADD-POST") {
-            let newPost = {
-                id: 5,
-                src: "//sm.ign.com/ign_ap/cover/a/avatar-gen/avatar-generations_hugw.jpg",
-                post: this._state.profilePage.newPostText,
-                count: 0
-            }
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = "";
-            this._subscriber(this.getState());
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            this._state.profilePage.newPostText = action.postMessage
-            this._subscriber(this.getState());
-        }
-        else if (action.type === "SEND-MESSAGE") {
-            let message = {
-                id: 7,
-                message: this._state.messagesPage.newMessageText
-            }
-            this._state.messagesPage.messages.push(message);
-            this._state.messagesPage.newMessageText = "";
-            this._subscriber(this.getState());
-        }
-        else if (action.type === "ON-MESSAGE-CHANGE") {
-            this._state.messagesPage.newMessageText = action.messageText;
-            this._subscriber(this.getState());
-        }
-    }
-};
+    // dispatch(action) {
+    //     profileReducer(this._state.profilePage, action);
+    //     dialogsReducer(this._state.messagesPage, action);
+    //     friendsReducer(this._state.friends, action)
 
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    postMessage: text
-})
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE });
-export const onMessageChangeActionCreator = (messageText) => ({
-    type: ON_MESSAGE_CHANGE,
-    messageText: messageText
-})
+    //     this._subscriber(this.getState());
+    // }
+};
 
 export default store;
