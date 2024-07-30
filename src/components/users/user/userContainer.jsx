@@ -5,10 +5,10 @@ import { followCreator } from "../../../redux/usersReducer";
 const mapStateToProps = (state, ownProps) => {
     const user = state.user.users.find(user => user.id === ownProps.id);
     return {
-        ...user
+        ...user,
+        users: state.user.users
     }
 };
-
 
 const mapDispatchToProps = (dispatch) => ({
     follow: (userId) => dispatch(followCreator(userId))

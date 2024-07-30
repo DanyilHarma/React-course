@@ -1,10 +1,10 @@
 import Message from "./message/message";
 import classes from "./user.module.css"
 
-const User = (props) => {
-    let messageElement = props.messages.map(message => <Message key={message.id} message={message.message} />)
 
-    let follow = () => {
+const User = (props) => {
+
+    const follow = () => {
         props.follow(props.id);
     }
 
@@ -18,14 +18,13 @@ const User = (props) => {
                 <div className={classes.userInfo}>
                     <div className={classes.userNameMessage}>
                         <div className={classes.name}>{props.name}</div>
-                        {messageElement}
+                        {/* {props.messages.map(message => <Message key={message.id} message={message.message} />)} */}
                     </div>
                     <div className={classes.residence}>
                         {props.country}, <br /> {props.city}
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }
