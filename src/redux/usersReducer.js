@@ -1,9 +1,12 @@
 const FOLLOW_USER = "FOLLOW-USER"
 const SET_USERS = "SET-USERS"
-
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 
 let initialState = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 50,
+    currentPage: 1
 }
 
 const userReducer = (state = initialState, action) => {
@@ -18,6 +21,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users
             }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.pageNumber
+            }
         default: return state;
     }
 }
@@ -25,6 +33,8 @@ const userReducer = (state = initialState, action) => {
 export const followCreator = (userId) => ({ type: FOLLOW_USER, userId });
 
 export const setUsersCreator = (users) => ({ type: SET_USERS, users })
+
+export const setCurrentPageCreator = (pageNumber) => ({ type: SET_CURRENT_PAGE, pageNumber })
 
 export default userReducer;
 
