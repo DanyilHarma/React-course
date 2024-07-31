@@ -6,16 +6,34 @@ import { Component } from "react";
 
 class Users extends Component {
 
-    constructor(props) {
-        super(props)
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+            this.props.setUsers(response.data.items);
+        });
+    }
+
+    setCurrentPage = (page) => {
+        this.props.setCurrentPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`).then(response => {
             this.props.setUsers(response.data.items);
         });
     }
 
     render = () => {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
         return (
             <div className={classes.usersAll}>
+                <div className={classes.buttonSelect}>
+                    {pages.map(page => {
+                        return <span onClick={(event) => { this.setCurrentPage(page) }} className={this.props.currentPage === page ? classes.pageSelected : classes.page}>{page}</span>
+                    })}
+                </div>
                 <h1>Users</h1>
                 <div className={classes.userContent}>
                     {this.props.users.map(user => (
@@ -33,7 +51,7 @@ class Users extends Component {
                     (
                     )
                 </div>
-            </div>
+            </div >
         )
     }
 }

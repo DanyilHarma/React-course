@@ -4,3 +4,19 @@ h1 {
     font-weight: 600;
     width: fit-content;
 }
+
+.buttonSelect {
+    display: flex;
+    gap: 10px;
+}
+
+.page {
+    color: #fff;
+    cursor: pointer;
+}
+
+.pageSelected {
+    font-weight: bold;
+    color: green;
+    cursor: pointer;
+}

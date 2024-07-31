@@ -1,14 +1,18 @@
 import { connect } from "react-redux"
 import Users from "./users"
-import { setUsersCreator } from "../../redux/usersReducer";
+import { setCurrentPageCreator, setUsersCreator } from "../../redux/usersReducer";
 
 
 const mapStateToProps = (state) => ({
-    users: state.user.users
+    users: state.user.users,
+    pageSize: state.user.pageSize,
+    totalUsersCount: state.user.totalUsersCount,
+    currentPage: state.user.currentPage
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    setUsers: (users) => dispatch(setUsersCreator(users))
+    setUsers: (users) => dispatch(setUsersCreator(users)),
+    setCurrentPage: (pageNumber) => dispatch(setCurrentPageCreator(pageNumber))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
