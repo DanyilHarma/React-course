@@ -22,3 +22,7 @@ img {
   border-radius: 10px;
   padding-left: 20px;
 }
+
+.imgPreloader {
+  filter: invert(1);
+}
