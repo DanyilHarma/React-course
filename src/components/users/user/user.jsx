@@ -1,6 +1,7 @@
 import Message from "./message/message";
 import classes from "./user.module.css"
 import image from "../../../assets/images/images.jpg"
+import { NavLink } from "react-router-dom";
 
 const User = (props) => {
 
@@ -12,7 +13,7 @@ const User = (props) => {
         <div className={classes.user}>
             <div className={classes.userContent}>
                 <div className={classes.img}>
-                    <img src={props.imgSrc ? props.imgSrc : image} alt={props.name} />
+                    <NavLink to={"/profile/" + props.id}><img src={props.imgSrc ? props.imgSrc : image} alt={props.name} /></NavLink>
                     <div className={classes.followButton} onClick={follow}>{props.isFollowed ? "Unfollow" : "Follow"}</div>
                 </div>
                 <div className={classes.userInfo}>
