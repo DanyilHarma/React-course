@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { addPostCreator, updateNewPostTextCreator } from "../../../redux/profileReducer";
+import { addPost, onPostChange } from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
 
 const mapStateToProps = (state) => ({
@@ -7,12 +7,7 @@ const mapStateToProps = (state) => ({
     posts: state.profilePage.posts
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    addPost: () => dispatch(addPostCreator()),
-    onPostChange: (postMessage) => dispatch(updateNewPostTextCreator(postMessage))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+export default connect(mapStateToProps, { addPost, onPostChange })(MyPosts);
 
 
 

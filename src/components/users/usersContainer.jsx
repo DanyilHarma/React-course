@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import Users from "./users"
-import { setCurrentPageCreator, setIsFetchingCreator, setUsersCreator } from "../../redux/usersReducer";
+import { setCurrentPage, toggleIsFetching, setUsers } from "../../redux/usersReducer";
 import { Component } from "react";
 import axios from "axios";
 import Preloader from "../common/preloader/preloader";
@@ -45,10 +45,6 @@ const mapStateToProps = (state) => ({
     isFetching: state.user.isFetching
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    setUsers: (users) => dispatch(setUsersCreator(users)),
-    setCurrentPage: (pageNumber) => dispatch(setCurrentPageCreator(pageNumber)),
-    toggleIsFetching: (isFetching) => dispatch(setIsFetchingCreator(isFetching))
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+export default connect(mapStateToProps,
+    { setUsers, setCurrentPage, toggleIsFetching })(UsersAPIComponent);

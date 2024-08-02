@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import User from "./user";
-import { followCreator } from "../../../redux/usersReducer";
+import { follow } from "../../../redux/usersReducer";
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -11,8 +11,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    follow: (userId) => dispatch(followCreator(userId))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, { follow })(User);
