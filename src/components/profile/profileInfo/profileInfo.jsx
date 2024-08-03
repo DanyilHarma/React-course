@@ -1,20 +1,21 @@
 
 import Preloader from "../../common/preloader/preloader";
 import classes from "./profileInfo.module.css"
+import images from "../../../assets/images/images.jpg"
+
 
 const ProfileInfo = (props) => {
 
     if (!props.profile || !props.profile.photos) {
         return <Preloader />
     }
-
     return (
         <div>
             <div className={classes.imageTop}>
             </div>
             <div className={classes.infoUser}>
                 <div className={classes.avatar}>
-                    <img src={props.profile.photos.large} alt="" />
+                    <img src={props.profile.photos.large ? null : images} alt="" />
                 </div>
                 <div className={classes.description}>
                     <div className={classes.userInfo}>

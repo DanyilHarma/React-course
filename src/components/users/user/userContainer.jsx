@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import User from "./user";
-import { follow } from "../../../redux/usersReducer";
+import { follow, unfollow } from "../../../redux/usersReducer";
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -11,4 +11,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps, { follow })(User);
+export default connect(mapStateToProps, { follow, unfollow })(User);
