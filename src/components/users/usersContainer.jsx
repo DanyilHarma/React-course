@@ -2,28 +2,30 @@ import { connect } from "react-redux"
 import Users from "./users"
 import { setCurrentPage, toggleIsFetching, setUsers } from "../../redux/usersReducer";
 import { Component } from "react";
-import axios from "axios";
 import Preloader from "../common/preloader/preloader";
+import { usersApi } from "../../api/api";
 
 
 
 class UsersAPIComponent extends Component {
 
     componentDidMount() {
+
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+        usersApi.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
             this.props.toggleIsFetching(false)
-            this.props.setUsers(response.data.items);
-        });
+            this.props.setUsers(response.items);
+        })
+
     }
 
     setCurrentPage = (page) => {
         this.props.toggleIsFetching(true);
         this.props.setCurrentPage(page);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`).then(response => {
+        usersApi.getUsers(page, this.props.pageSize).then(response => {
             this.props.toggleIsFetching(false)
-            this.props.setUsers(response.data.items);
-        });
+            this.props.setUsers(response.items);
+        })
     }
 
     render = () => {

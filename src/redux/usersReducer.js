@@ -1,4 +1,5 @@
 const FOLLOW_USER = "FOLLOW-USER"
+const UNFOLLOW_USER = "UNFOLLOW_USER"
 const SET_USERS = "SET-USERS"
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
@@ -8,15 +9,21 @@ let initialState = {
     pageSize: 5,
     totalUsersCount: 51,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
 }
 
 const userReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case FOLLOW_USER:
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.userId ? { ...user, isFollowed: !user.isFollowed } : user)
+                users: state.users.map(user => user.id === action.userId ? { ...user, followed: true } : user)
+            }
+        case UNFOLLOW_USER:
+            return {
+                ...state,
+                users: state.users.map(user => user.id === action.userId ? { ...user, followed: false } : user)
             }
         case SET_USERS:
             return {
@@ -38,6 +45,8 @@ const userReducer = (state = initialState, action) => {
 }
 
 export const follow = (userId) => ({ type: FOLLOW_USER, userId });
+
+export const unfollow = (userId) => ({ type: UNFOLLOW_USER, userId })
 
 export const setUsers = (users) => ({ type: SET_USERS, users })
 
