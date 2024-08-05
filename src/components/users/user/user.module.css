@@ -57,16 +57,22 @@
 }
 
 .followButton {
-    width: 95px;
+    width: 110px;
     text-align: center;
     font-size: 22px;
     font-weight: 600;
     color: #888686;
     background: #4f4f4f;
     border-radius: 10px;
-    padding: 5px 10px;
+    padding: 5px 0px;
     cursor: pointer;
+    border: none;
     transition: background .2s, color .2s;
+}
+
+.followButton:disabled {
+    background: #888686;
+    color: #4f4f4f;
 }
 
 .followButton:hover {
