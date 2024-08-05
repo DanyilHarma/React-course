@@ -9,6 +9,13 @@ const instance = axios.create({
 })
 
 
+export const headerApi = {
+    setAuth() {
+        return instance.get("auth/me")
+            .then(response => response.data)
+    }
+}
+
 export const profileApi = {
     setUserProfile(userId) {
         return instance.get(`profile/${userId}`)

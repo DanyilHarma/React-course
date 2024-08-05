@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 import Users from "./users"
-import { setCurrentPage, toggleIsFetching, setUsers } from "../../redux/usersReducer";
+import { setCurrentPage, toggleIsFetching, setUsers, setCurrentPageThunk } from "../../redux/usersReducer";
 import { Component } from "react";
 import Preloader from "../common/preloader/preloader";
 import { usersApi } from "../../api/api";
@@ -20,12 +20,7 @@ class UsersAPIComponent extends Component {
     }
 
     setCurrentPage = (page) => {
-        this.props.toggleIsFetching(true);
-        this.props.setCurrentPage(page);
-        usersApi.getUsers(page, this.props.pageSize).then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(response.items);
-        })
+        this.props.setCurrentPageThunk(page, this.props.pageSize);
     }
 
     render = () => {
@@ -49,4 +44,4 @@ const mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps,
-    { setUsers, setCurrentPage, toggleIsFetching })(UsersAPIComponent);
+    { setUsers, setCurrentPage, toggleIsFetching, setCurrentPageThunk })(UsersAPIComponent);
