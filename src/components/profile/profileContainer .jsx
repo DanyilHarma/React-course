@@ -1,37 +1,30 @@
-import { Component } from "react";
 import { connect } from "react-redux";
 import { setUser, setUserProfile } from "../../redux/profileReducer";
 import Profile from "./profile";
-import { useParams } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
+import { useEffect } from "react";
 
 
 
-class ProfileContainer extends Component {
+const ProfileContainer = (props) => {
+    // debugger
+    const params = useParams();
+
+    useEffect(() => {
+        const userId = params.userId || 31495;
+        props.setUser(userId);
+    }, [params.userId, setUser])
 
 
+    if (!props.isAuth) return <Navigate to={"/login"} />
 
-    componentDidMount = () => {
-        const userId = this.props.params.userId || 31495;
-        this.props.setUser(userId);
-    }
-
-    render = () => {
-        return (
-            <div>
-                <Profile {...this.props} profile={this.props.profile} />
-            </div>
-        )
-    }
+    return <div><Profile profile={props.profile} /></div>
 
 }
 
 const mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
 })
 
-const UserIdContainerComponent = (props) => {
-    const params = useParams();
-    return <ProfileContainer {...props} params={params} />
-}
-
-export default connect(mapStateToProps, { setUserProfile, setUser })(UserIdContainerComponent);
+export default connect(mapStateToProps, { setUserProfile, setUser })(ProfileContainer);

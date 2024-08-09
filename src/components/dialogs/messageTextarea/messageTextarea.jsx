@@ -1,21 +1,27 @@
 import React from "react"
 import classes from "./messageTextarea.module.css"
+import { useDispatch, useSelector } from "react-redux"
+import { onMessageChange, onSendMessage } from "../../../redux/dialogsReducer"
 
 
-const MessageTextarea = (props) => {
-    const onSendMessage = () => {
-        props.onSendMessage();
+const MessageTextarea = () => {
+
+    const newMessageText = useSelector(state => state.messagesPage.newMessageText)
+    const dispatch = useDispatch();
+
+    const handleSendMessage = () => {
+        dispatch(onSendMessage());
     }
 
-    const onMessageChange = (e) => {
+    const handleMessageChange = (e) => {
         let messageText = e.target.value;
-        props.onMessageChange(messageText);
+        dispatch(onMessageChange(messageText));
     }
 
     return (
         <div className={classes.textarea}>
-            <textarea name="" id="" onChange={onMessageChange} placeholder="Print message..." value={props.newMessageText} />
-            <button onClick={onSendMessage}>Send</button>
+            <textarea name="" id="" onChange={handleMessageChange} placeholder="Print message..." value={newMessageText} />
+            <button onClick={handleSendMessage}>Send</button>
         </div>
     )
 }
