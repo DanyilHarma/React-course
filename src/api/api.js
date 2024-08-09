@@ -10,7 +10,7 @@ const instance = axios.create({
 
 
 export const headerApi = {
-    setAuth() {
+    me() {
         return instance.get("auth/me")
             .then(response => response.data)
     }

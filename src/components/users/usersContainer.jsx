@@ -1,37 +1,37 @@
 import { connect } from "react-redux"
 import Users from "./users"
-import { setCurrentPage, toggleIsFetching, setUsers, setCurrentPageThunk } from "../../redux/usersReducer";
-import { Component } from "react";
+import { setCurrentPage, toggleIsFetching, setUsers, setCurrentPageThunk, getCurrentPage } from "../../redux/usersReducer";
+import { useEffect } from "react";
 import Preloader from "../common/preloader/preloader";
 import { usersApi } from "../../api/api";
+import { Navigate } from "react-router-dom";
 
 
 
-class UsersAPIComponent extends Component {
+const UsersAPIComponent = (props) => {
 
-    componentDidMount() {
 
-        this.props.toggleIsFetching(true);
-        usersApi.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(response.items);
-        })
+    useEffect(() => {
+        props.toggleIsFetching(false);
+        props.getCurrentPage(props.currentPage, props.pageSize)
+    }, [toggleIsFetching, getCurrentPage, props.currentPage, props.pageSize])
 
+
+
+
+    const handleCurrentPage = (page) => {
+        props.getCurrentPage(page, props.pageSize);
     }
 
-    setCurrentPage = (page) => {
-        this.props.setCurrentPageThunk(page, this.props.pageSize);
-    }
 
-    render = () => {
-        return <>
-            {this.props.isFetching ? <Preloader /> : null}
-            <Users totalUsersCount={this.props.totalUsersCount}
-                pageSize={this.props.pageSize} currentPage={this.props.currentPage} users={this.props.users}
-                setCurrentPage={this.setCurrentPage}
-            />
-        </>
-    }
+    if (!props.isAuth) return <Navigate to={"/login"} />
+    return <>
+        {props.isFetching ? <Preloader /> : null}
+        <Users totalUsersCount={props.totalUsersCount}
+            pageSize={props.pageSize} currentPage={props.currentPage} users={props.users}
+            setCurrentPage={handleCurrentPage}
+        />
+    </>
 }
 
 const mapStateToProps = (state) => ({
@@ -39,9 +39,10 @@ const mapStateToProps = (state) => ({
     pageSize: state.user.pageSize,
     totalUsersCount: state.user.totalUsersCount,
     currentPage: state.user.currentPage,
-    isFetching: state.user.isFetching
+    isFetching: state.user.isFetching,
+    isAuth: state.auth.isAuth
 })
 
 
 export default connect(mapStateToProps,
-    { setUsers, setCurrentPage, toggleIsFetching, setCurrentPageThunk })(UsersAPIComponent);
+    { setUsers, toggleIsFetching, getCurrentPage })(UsersAPIComponent);

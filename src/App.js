@@ -9,6 +9,7 @@ import UsersContainer from './components/users/usersContainer';
 import { connect } from 'react-redux';
 import ProfileContainer from './components/profile/profileContainer ';
 import HeaderContainer from './components/header/HeaderContainer';
+import LoginPage from './components/login/loginPage';
 
 const App = (props) => {
 
@@ -19,11 +20,12 @@ const App = (props) => {
       <div className="app-wrapper-content">
         <Routes>
           <Route path="/profile/:userId?" element={<ProfileContainer />} />
-          <Route path="/dialogs/*" element={<Dialogs state={props.state} />} />
+          <Route path="/dialogs/*" element={<Dialogs />} />
           <Route path="/news/*" element={<News />} />
           <Route path="/music/*" element={<Music />} />
           <Route path="/users/*" element={<UsersContainer />} />
           <Route path="/settings/*" element={<Settings />} />
+          <Route path="/login/*" element={<LoginPage state={props.state} />} />
         </Routes>
       </div>
     </div >

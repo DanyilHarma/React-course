@@ -1,21 +1,22 @@
-import { Component } from "react";
+import { useEffect } from "react";
 import Header from "./Header";
-import { connect } from "react-redux";
-import { setAuth, setAuthUserId } from "../../redux/auth-reducer";
+import { connect, useDispatch } from "react-redux";
+import { setAuth } from "../../redux/auth-reducer";
 
 
-class HeaderContainer extends Component {
 
-    componentDidMount = () => {
+const HeaderContainer = (props) => {
 
-        this.props.setAuth()
-    }
+    const dispatch = useDispatch();
 
-    render() {
-        return (
-            <Header {...this.props} />
-        )
-    }
+    useEffect(() => {
+        dispatch(setAuth());
+    }, [dispatch])
+
+    return (
+        <Header {...props} />
+    )
+
 }
 
 const mapStateToProps = (state) => ({
@@ -24,4 +25,4 @@ const mapStateToProps = (state) => ({
     login: state.auth.login
 })
 
-export default connect(mapStateToProps, { setAuthUserId, setAuth })(HeaderContainer)
+export default connect(mapStateToProps)(HeaderContainer)

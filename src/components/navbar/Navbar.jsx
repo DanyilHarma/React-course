@@ -15,7 +15,7 @@ const Nav = (props) => {
                 <NavLink to="/users" className={({ isActive }) => isActive ? classes.active : undefined}>Users</NavLink>
             </div>
             <div className={classes.item}>
-                <NavLink to="/dialogs" className={({ isActive }) => isActive ? classes.active : undefined}>Messages</NavLink>
+                <NavLink to="/dialogs" className={({ isActive }) => isActive ? classes.active : undefined}>Dialogs</NavLink>
             </div>
             <div className={classes.item}>
                 <NavLink to="/news" className={({ isActive }) => isActive ? classes.active : undefined}>News</NavLink>

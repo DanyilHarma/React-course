@@ -68,7 +68,7 @@ export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isF
 
 
 
-export const setCurrentPageThunk = (page, pageSize) => {
+export const getCurrentPage = (page, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(page));

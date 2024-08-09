@@ -2,25 +2,33 @@ import Message from "./message/message";
 import classes from "./user.module.css"
 import image from "../../../assets/images/images.jpg"
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { follow, unfollow } from "../../../redux/usersReducer";
 
 
 
 const User = (props) => {
+
+    const dispatch = useDispatch();
+
     const handleFollow = () => {
-        props.follow(props.id)
+        dispatch(follow(props.id))
     }
 
     const handleUnfollow = () => {
-        props.unfollow(props.id)
+        dispatch(unfollow(props.id))
     }
+
+    const isFollowed = props.followingInProgress.some(userId => userId === props.id);
 
     return (
         <div className={classes.user}>
             <div className={classes.userContent}>
                 <div className={classes.img}>
                     <NavLink to={"/profile/" + props.id}><img src={props.imgSrc ? props.imgSrc : image} alt={props.name} /></NavLink>
-                    {props.followed ? (<button disabled={props.followingInProgress.some(userId => userId === props.id)} className={classes.followButton} onClick={handleUnfollow}>Unfollow</button>)
-                        : (<button disabled={props.followingInProgress.some(userId => userId === props.id)} className={classes.followButton} onClick={handleFollow}>Follow</button>)}
+                    <button disabled={isFollowed} className={classes.followButton} onClick={props.followed ? handleUnfollow : handleFollow}>
+                        {props.followed ? "Unfollow" : "Follow"}
+                    </button>
                 </div>
                 <div className={classes.userInfo}>
                     <div className={classes.userNameMessage}>
